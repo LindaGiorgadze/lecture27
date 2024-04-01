@@ -1,7 +1,10 @@
 import { useForm } from "react-hook-form";
 import useLogin from "../../serviceHooks/useLogin";
+import { useSelector } from "react-redux";
 
 export default function Login() {
+  const user = useSelector((state) => state.user.user);
+  console.log(user);
   const handleLogin = useLogin();
   const {
     register,
@@ -10,8 +13,8 @@ export default function Login() {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: "",
-      password: "",
+      email: "kminchelle",
+      password: "0lelplR",
     },
   });
 
@@ -22,7 +25,7 @@ export default function Login() {
       password: data.password,
     });
 
-    return (
+  return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">

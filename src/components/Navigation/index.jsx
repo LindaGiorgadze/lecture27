@@ -3,10 +3,13 @@ import "./Navigation.scss";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { logOut } from "../../store/user/userSlice";
+import { useDispatch } from "react-redux";
 
 const navigation = [
   { name: "პროდუქტები", href: "/", current: true },
   { name: "კალათა", href: "/cart", current: false },
+  { name: "კალკულატორი", href: "calculator", current: false },
 ];
 
 function classNames(...classes) {
@@ -14,6 +17,7 @@ function classNames(...classes) {
 }
 
 export default function Navigation() {
+  const dispatch = useDispatch();
   return (
     <header>
       <Disclosure as="nav" className="bg-gray-800">
@@ -121,15 +125,15 @@ export default function Navigation() {
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
-                            <a
-                              href="#"
+                            <button
                               className={classNames(
                                 active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700",
+                                "block px-4 py-2 text-sm text-gray-700 inline bg-transparent border-none",
                               )}
+                              onClick={() => dispatch(logOut())}
                             >
                               Sign out
-                            </a>
+                            </button>
                           )}
                         </Menu.Item>
                       </Menu.Items>

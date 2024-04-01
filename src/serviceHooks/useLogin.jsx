@@ -1,7 +1,10 @@
 import axios from "axios";
 import { useMutation } from "react-query";
+import { useDispatch } from "react-redux";
+import { logIn } from "../store/user/userSlice";
 
 const useLogin = () => {
+  const dispatch = useDispatch();
   const handleLogin = useMutation(
     async (data) => {
       try {
@@ -20,7 +23,10 @@ const useLogin = () => {
       }
     },
     {
-      onSuccess: (data) => console.log(data?.data),
+      onSuccess: (data) => {
+        data?.data && dispatch(logIn(data?.data));
+        console.log(data?.data);
+      },
     },
   );
 

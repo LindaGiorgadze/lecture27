@@ -4,6 +4,7 @@ import Navigation from "./components/Navigation";
 import AuthLayout from "./components/Layouts/AuthLayout";
 import Login from "./pages/authPages/Login";
 import { QueryClient, QueryClientProvider } from "react-query";
+import Calculator from "./pages/calculator";
 
 function App() {
   const queryClient = new QueryClient();
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<AuthLayout />}>
               <Route index element={<Login />} />
+              <Route path="calculator" element={<Calculator />} />
             </Route>
           </Routes>
         </div>
