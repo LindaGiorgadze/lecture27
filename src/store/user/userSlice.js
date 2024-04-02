@@ -12,10 +12,12 @@ const user = createSlice({
       action.payload &&
         sessionStorage.setItem("user", JSON.stringify(action.payload));
       state.user = action.payload;
+    //   window.location.replace("/");
     },
     logOut: (state) => {
       sessionStorage.removeItem("user");
       state.user = {};
+      window.location.replace("/");
     },
   },
 });
